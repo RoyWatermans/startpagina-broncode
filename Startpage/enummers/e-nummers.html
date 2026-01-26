@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a1a">
+    <title>E-Check Master</title>
+    <style>
+        :root {
+            --groen: #4CAF50; --geel: #FFEB3B; --oranje: #FF9800;
+            --rood: #f44336; --donkerrood: #8B0000;
+        }
+        body { font-family: sans-serif; background: #1a1a1a; color: white; margin: 0; padding: 15px; }
+        .sticky-header { position: sticky; top: 0; background: #1a1a1a; padding-bottom: 15px; z-index: 100; }
+        .search-box { width: 100%; padding: 18px; font-size: 20px; border-radius: 12px; border: none; background: #333; color: white; outline: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); box-sizing: border-box; }
+        #results { margin-top: 10px; }
+        .card { background: #2a2a2a; border-radius: 12px; padding: 15px; margin-bottom: 12px; display: none; border-left: 8px solid #555; }
+        .card.visible { display: block; }
+        
+        .Groen { border-left-color: var(--groen); }
+        .Geel { border-left-color: var(--geel); }
+        .Oranje { border-left-color: var(--oranje); }
+        .Rood { border-left-color: var(--rood); }
+        .DonkerRood { border-left-color: var(--donkerrood); background: #3d1a1a; }
+
+        h2 { margin: 0; font-size: 22px; color: #fff; }
+        .tag { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-top: 5px; background: #444; }
+        .desc { margin-top: 10px; font-size: 15px; line-height: 1.4; color: #ccc; }
+        .warning { margin-top: 8px; font-size: 13px; font-style: italic; color: #ffab91; border-top: 1px solid #444; padding-top: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="sticky-header">
+    <h1>E-Check Master</h1>
+    <input type="text" inputmode="numeric" id="searchInput" class="search-box" placeholder="Typ nummer (bijv. 466)..." autofocus>
+</div>
+
+<div id="results"></div>
+
+<script src="data.js"></script>
+<script>
+    const resultsDiv = document.getElementById('results');
+    const searchInput = document.getElementById('searchInput');
+
+    function init() {
+        if (typeof eNumbers !== 'undefined') {
+            eNumbers.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `card ${item.risk}`;
+                card.setAttribute('data-num', item.n);
+                card.innerHTML = `
+                    <h2>E${item.n} - ${item.name}</h2>
+                    <span class="tag">${item.risk}</span>
+                    <p class="desc">${item.desc || ''}</p>
+                    ${item.warn ? `<p class="warning">⚠ ${item.warn}</p>` : ''}
+                    <a href="detail.html?e=${item.n}" style="display:block; margin-top:10px; color:#FFEB3B; text-decoration:none; font-size:13px; font-weight:bold;">
+                        → Bekijk Touvier Analyse
+                    </a>
+                `;
+                resultsDiv.appendChild(card);
+            });
+            // Toon alles bij start (of begin leeg)
+            updateSearch();
+        }
+    }
+
+    function updateSearch() {
+        const val = searchInput.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const num = card.getAttribute('data-num').toLowerCase();
+            if (val === "" || num.startsWith(val)) {
+                card.classList.add('visible');
+            } else {
+                card.classList.remove('visible');
+            }
+        });
+    }
+
+    searchInput.addEventListener('input', updateSearch);
+    init();
+</script>
+</body>
+</html>

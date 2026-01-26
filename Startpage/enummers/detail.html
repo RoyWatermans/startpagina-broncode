@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Check Detail</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; padding: 20px; line-height: 1.6; }
+        .back { color: #4CAF50; text-decoration: none; font-weight: bold; display: block; margin-bottom: 20px; }
+        .risk-banner { padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px; color: white; font-weight: bold; }
+        .Touvier-box { background: #2a2a2a; padding: 20px; border-radius: 12px; border-left: 5px solid #FFEB3B; }
+        .DonkerRood { background: #8B0000; } .Rood { background: #f44336; } .Groen { background: #4CAF50; }
+    </style>
+</head>
+<body>
+    <a href="e-nummers.html" class="back">← Terug naar lijst</a>
+    <h1 id="eName">Laden...</h1>
+    <div id="riskBanner" class="risk-banner"></div>
+    <p id="eDesc" style="font-size: 1.1em;"></p>
+    <div class="Touvier-box">
+        <h3>Touvier & Hasenböhler Motivatie</h3>
+        <p id="touvierContent">Nog geen uitgebreide beschrijving beschikbaar.</p>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const eID = params.get('e');
+        const item = eNumbers.find(x => x.n === eID);
+        if (item) {
+            document.getElementById('eName').innerText = "E" + item.n + " - " + item.name;
+            document.getElementById('riskBanner').innerText = "Risico: " + item.risk;
+            document.getElementById('riskBanner').className = "risk-banner " + item.risk;
+            document.getElementById('eDesc').innerText = item.desc;
+            if (item.longDesc) document.getElementById('touvierContent').innerText = item.longDesc;
+        }
+    </script>
+</body>
+</html>
