@@ -41,15 +41,18 @@
 
 <script src="data.js"></script>
 <script>
-    const resultsDiv = document.getElementById('results');
+ const resultsDiv = document.getElementById('results');
     const searchInput = document.getElementById('searchInput');
 
     function init() {
         if (typeof eNumbers !== 'undefined') {
+            resultsDiv.innerHTML = ''; // Maak leeg voor de zekerheid
             eNumbers.forEach(item => {
                 const card = document.createElement('div');
                 card.className = `card ${item.risk}`;
                 card.setAttribute('data-num', item.n);
+                card.setAttribute('data-name', item.name.toLowerCase()); // Voor de zoekmachine
+                
                 card.innerHTML = `
                     <h2>E${item.n} - ${item.name}</h2>
                     <span class="tag">${item.risk}</span>
@@ -61,7 +64,6 @@
                 `;
                 resultsDiv.appendChild(card);
             });
-            // Toon alles bij start (of begin leeg)
             updateSearch();
         }
     }
@@ -69,9 +71,13 @@
     function updateSearch() {
         const val = searchInput.value.toLowerCase();
         const cards = document.querySelectorAll('.card');
+        
         cards.forEach(card => {
             const num = card.getAttribute('data-num').toLowerCase();
-            if (val === "" || num.startsWith(val)) {
+            const name = card.getAttribute('data-name');
+            
+            // Zoeklogica: match op nummer OF op naam
+            if (val === "" || num.includes(val) || name.includes(val)) {
                 card.classList.add('visible');
             } else {
                 card.classList.remove('visible');

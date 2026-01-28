@@ -4,6 +4,14 @@ const eNumbers = [
         desc: "Natuurlijk extract; veilig.", 
         longDesc: "Geconcentreerde geelwortel. Geen risico voor darm of vaten." 
     },
+	
+	{ 
+        n: "102", name: "Tartrazine", risk: "Rood", 
+        desc: "Synthetische azo-kleurstof.", 
+        warn: "⚠ DUBBEL RISICO: Allergie & Darmprikkeling.", 
+        longDesc: "Deze kleurstof staat bekend om het uitlokken van overgevoeligheidsreacties. Voor iemand met een gevoelige darmwand (na poliepen) is dit een onnodige chemische prikkel die ontstekingsreacties kan bevorderen." 
+    },
+
     { 
         n: "101", name: "Riboflavine", risk: "Groen", 
         desc: "Vitamine B2; veilig.", 
@@ -31,8 +39,9 @@ const eNumbers = [
     },
     { 
         n: "122", name: "Karmoizijn", risk: "DonkerRood", 
-        desc: "Touvier: Potentieel kankerverwekkend.", 
-        longDesc: "Synthetische rode kleurstof verboden in diverse landen." 
+        desc: "Synthetische rode kleurstof.", 
+        warn: "⚠ DUBBEL RISICO: Potentieel kankerverwekkend.", 
+        longDesc: "Touvier classificeert dit als een zeer omstreden stof. Het kan celprocessen verstoren, wat kritiek is bij een geschiedenis van poliepvorming (celmutaties)." 
     },
     { 
         n: "124", name: "Ponceau 4R", risk: "DonkerRood", 
@@ -67,8 +76,9 @@ const eNumbers = [
     },
     { 
         n: "171", name: "Titaandioxide", risk: "DonkerRood", 
-        desc: "VERBODEN: Beschadigt DNA.", 
-        longDesc: "Nanodeeltjes kunnen DNA-schade veroorzaken." 
+        desc: "Witte kleurstof (nanodeeltjes).", 
+        warn: "⚠ DUBBEL RISICO: DNA-schade & Darmwandpenetratie.", 
+        longDesc: "Verboden in de EU omdat nanodeeltjes de darmbarrière passeren en DNA-schade kunnen veroorzaken. Dit is een directe bedreiging voor het herstel van de darmwand." 
     },
     { 
         n: "172", name: "IJzeroxiden", risk: "Geel", 
@@ -111,29 +121,35 @@ const eNumbers = [
         warn: "DARM: Mijden bij poliepen!", 
         longDesc: "Antibioticum dat de darmflora kan verstoren. Snijd de korst ruim weg." 
     },
+	{ 
+        n: "242", name: "Dimethyldicarbonaat", risk: "Oranje", 
+        desc: "Conserveermiddel (koudsterilisatiemiddel) in dranken.", 
+        warn: "UPF: Marker voor zwaar bewerkte dranken.", 
+        longDesc: "Dit middel wordt toegevoegd tijdens het bottelen om gisten en bacteriën te doden zonder dat de drank verhit hoeft te worden. Hoewel de stof zelf snel afbreekt in minieme hoeveelheden methanol en CO2, classificeert de benchmark van Touvier dit als een puur industrieel procesmiddel. Het is een marker voor Ultra-Processed Food (UPF) en hoort niet thuis in een dieet dat streeft naar onbewerkte, 'schone' producten." 
+    },
     { 
         n: "249", name: "Kaliumnitriet", risk: "DonkerRood", 
         desc: "Conserveermiddel vleeswaren.", 
-        warn: "DARM: Link met poliepen/kanker.", 
-        longDesc: "NutriNet-Santé studie: Nitrieten verhogen risico op darmkanker aanzienlijk." 
+        warn: "⚠ DUBBEL RISICO: Darmkanker & Vaatbelasting!", 
+        longDesc: "Het gevaarlijkste nummer voor jouw profiel. Het bevordert de vorming van nitrosaminen (kankerverwekkend na poliepen) en verhoogt de oxidatieve stress in je vaten (risico na TIA)." 
     },
     { 
         n: "250", name: "Natriumnitriet", risk: "DonkerRood", 
-        desc: "Zit in bewerkt vlees.", 
-        warn: "DARM: Directe link met poliepen.", 
-        longDesc: "Wordt omgezet in kankerverwekkende nitrosaminen in de maag." 
+        desc: "Bewerkt vlees (ham, spek, etc.).", 
+        warn: "⚠ DUBBEL RISICO: Directe link met poliepen & TIA risico!", 
+        longDesc: "Gelijk aan E249. Het blokkeert de gezonde werking van de darmcellen en zorgt voor ontstekingswaarden in het bloed die vaatwand-erosie versnellen." 
     },
     { 
         n: "251", name: "Natriumnitraat", risk: "DonkerRood", 
-        desc: "In kaas en vlees.", 
-        warn: "DARM: Wordt in lichaam omgezet in nitriet.", 
-        longDesc: "Wordt in de darm omgezet in schadelijk nitriet." 
+        desc: "Conserveermiddel in kaas en vlees.", 
+        warn: "⚠ DUBBEL RISICO: Wordt in darm nitriet.", 
+        longDesc: "Hoewel nitraat op zichzelf minder schadelijk lijkt, zet je lichaam dit om in nitriet. Dit proces is funest voor een darmwand die rust nodig heeft na poliepvorming." 
     },
     { 
         n: "252", name: "Kaliumnitraat", risk: "DonkerRood", 
-        desc: "Salpeter in kaas/vlees.", 
-        warn: "DARM: Link met nitrosaminen.", 
-        longDesc: "Beschadigt de darmwand en bevordert celmutaties (poliepen/kanker)." 
+        desc: "Salpeter in traditionele producten.", 
+        warn: "⚠ DUBBEL RISICO: Chemische darmprikkel.", 
+        longDesc: "Beschadigt direct de slijmlaag van de darm. De hiermee gepaard gaande ontstekingen zijn een bekende trigger voor zowel nieuwe poliepen als vaatproblemen." 
     },
     { 
         n: "260", name: "Azijnzuur", risk: "Groen", 
@@ -197,21 +213,21 @@ const eNumbers = [
     },
     { 
         n: "338", name: "Fosforzuur", risk: "Rood", 
-        desc: "Zuurteregelaar in cola.", 
-        warn: "VATEN: Versnelt aderverkalking (TIA).", 
-        longDesc: "Verhoogt kalkafzetting in vaten; risico bij FH." 
+        desc: "Zuurteregelaar in cola en UPF.", 
+        warn: "⚠ DUBBEL RISICO: Vaatstijfheid & Kalkafzetting.", 
+        longDesc: "Hasenböhler waarschuwt: industriële fosfaten worden 100% opgenomen en 'verkalken' de vaten. Dit is levensgevaarlijk na een TIA en bij FH." 
     },
     { 
         n: "339", name: "Natriumfosfaat", risk: "Rood", 
-        desc: "Beïnvloedt calciumbalans.", 
-        warn: "VATEN: Gevaar bij FH!", 
-        longDesc: "Synthetische fosfaten die aderverkalking kunnen bevorderen." 
+        desc: "Stabilisator in zuivel en sauzen.", 
+        warn: "⚠ DUBBEL RISICO: Aderverkalking & Nierbelasting.", 
+        longDesc: "Verhoogt de fosfaatspiegel in het bloed direct, wat de binnenwand van de vaten (endotheel) beschadigt. Mijden voor vaatbehoud." 
     },
     { 
         n: "340", name: "Kaliumfosfaten", risk: "Rood", 
-        desc: "Stabilisator.", 
-        warn: "VATEN: Extra fosfaatbelasting (FH).", 
-        longDesc: "Bevordert vaatstijfheid; mijden bij FH." 
+        desc: "Hulpstof in poeders en dranken.", 
+        warn: "⚠ DUBBEL RISICO: Versnelt vaatveroudering.", 
+        longDesc: "Draagt bij aan de totale fosfaat-overload. In combinatie met de darm-ontsteking van UPF vormt dit een toxische cocktail voor je systeem." 
     },
     { 
         n: "350", name: "Natriummalaten", risk: "Groen", 
@@ -238,14 +254,11 @@ const eNumbers = [
         desc: "Natuurlijk bindmiddel uit roodalgen.", 
         longDesc: "Het plantaardige alternatief voor gelatine. Het is rijk aan vezels en volkomen veilig voor de darmen en vaten." 
     },
-
-	
-	
     { 
         n: "407", name: "Carrageen", risk: "DonkerRood", 
-        desc: "Veroorzaakt darmontsteking.", 
-        warn: "DARM: Mijden bij poliepen!", 
-        longDesc: "Tast de beschermende slijmlaag van de darm aan." 
+        desc: "Verdikker in vla en light-producten.", 
+        warn: "⚠ DUBBEL RISICO: 'Wasmiddel' voor de darmwand.", 
+        longDesc: "Veroorzaakt zware darmontsteking in lab-tests. Voor iemand met een verleden van poliepen is dit de snelste weg naar nieuwe complicaties." 
     },
     { 
         n: "410", name: "Johannesbroodpitmeel", risk: "Groen", 
@@ -257,26 +270,22 @@ const eNumbers = [
         desc: "Kan gasvorming geven.", 
         longDesc: "Vezel die darmklachten kan geven bij gevoeligheid." 
     },
-	
 	{ 
         n: "414", name: "Arabische gom", risk: "Groen", 
         desc: "Natuurlijke gom van de acaciaboom.", 
         longDesc: "Een veilige vezel die vaak in snoep en frisdrank zit. Het kan zelfs fungeren als een prebioticum voor goede darmbacteriën." 
     },
-	
     { 
         n: "415", name: "Xanthaangom", risk: "Geel", 
         desc: "Veilig; licht laxerend.", 
         longDesc: "Gom geproduceerd door bacteriële fermentatie." 
     },
-	
 	{ 
         n: "420", name: "Sorbitol", risk: "Geel", 
         desc: "Suikeralcohol (polyool) gebruikt als zoetstof en bevochtiger.", 
         warn: "DARM: Kan laxerend werken en krampen geven.", 
         longDesc: "Sorbitol wordt slecht opgenomen in de dunne darm en fermenteert in de dikke darm. Dit trekt water aan, wat bij gevoelige darmen kan leiden tot een opgeblazen gevoel, winderigheid en diarree. Touvier adviseert om bij een geschiedenis van darmklachten of poliepen de inname van polyolen te beperken om onnodige prikkeling van de darmwand te voorkomen." 
     },
-	
     { 
         n: "422", name: "Glycerol", risk: "Geel", 
         desc: "Suikeralcohol; veilig.", 
@@ -290,8 +299,9 @@ const eNumbers = [
     },
     { 
         n: "433", name: "Polysorbaat 80", risk: "DonkerRood", 
-        desc: "Tast darmbarrière aan.", 
-        longDesc: "Lost de slijmlaag van de darmwand op en triggert ontstekingen." 
+        desc: "Emulgator in ijs en sauzen.", 
+        warn: "⚠ DUBBEL RISICO: Lekkende darm & Bloedonrust.", 
+        longDesc: "Lost de beschermende slijmlaag van je darmen op. Hierdoor 'lekken' gifstoffen naar je bloed, wat je vaten direct onder ontstekingsdruk zet." 
     },
     { 
         n: "440", name: "Pectine", risk: "Groen", 
@@ -339,18 +349,24 @@ const eNumbers = [
         longDesc: "Synthetisch alternatief voor gluten; vaak in glutenvrij brood." 
     },
     { 
-        n: "466", name: "Cellulosegom", risk: "DonkerRood", 
-        desc: "Link darmkanker (2024).", 
-        warn: "DARM: Schadelijk voor slijmlaag.", 
-        longDesc: "Verstoort het microbioom en lokt celmutaties in de darm uit." 
+        n: "466", name: "Cellulosegom (CMC)", risk: "DonkerRood", 
+        desc: "Veelgebruikte emulgator.", 
+        warn: "⚠ DUBBEL RISICO: Touvier 2024: Kankerrisico!", 
+        longDesc: "Sterkste link met darmkanker in recente studies. Het verstoort de darmbacteriën zo erg dat celmutaties (poliepen) worden uitgelokt." 
+    },
+	
+	{ 
+        n: "468", name: "Vernette natriumcarboxymethylcellulose", risk: "Rood", 
+        desc: "Stabilisator en vulstof (gemodificeerde cellulose).", 
+        warn: "⚠ DUBBEL RISICO: Darmwand-irritant & UPF-marker.", 
+        longDesc: "Chemisch neefje van E466. Touvier (2024) waarschuwt dat gemodificeerde celluloses de beschermende slijmlaag van de darm kunnen verzwakken. Gezien de eerdere SSL en adenoom uitslagen is dit een nummer om strikt te mijden om de darmwand rust te geven." 
     },
     { 
         n: "471", name: "Mono- en diglyceriden", risk: "DonkerRood", 
-        desc: "Emulgator in brood/vetten.", 
-        warn: "ALGEMEEN: Verhoogd kankerrisico (Touvier).", 
-        longDesc: "Statistisch verband aangetoond met borst- en prostaatkanker." 
+        desc: "Emulgator in brood en margarine.", 
+        warn: "⚠ DUBBEL RISICO: Algemeen kankerrisico.", 
+        longDesc: "Nieuwe data (2024) tonen een statistisch verband met borst- en prostaatkanker. Het is de ultieme marker voor zwaar bewerkt voedsel." 
     },
-	
 	{ 
         n: "481", name: "Natriumstearoyllactylaat", risk: "Oranje", 
         desc: "Emulgator in industrieel brood en gebak.", 
@@ -362,22 +378,16 @@ const eNumbers = [
         desc: "Synthetische emulgator.", 
         longDesc: "Vaak gebruikt in gist en droge bakproducten. Kan bij grote hoeveelheden darmklachten veroorzaken door de afbraakproducten in de dikke darm." 
     }, 
-	
-	
-	
     { 
         n: "500", name: "Natriumcarbonaten", risk: "Groen", 
         desc: "Zout (soda) gebruikt als rijsmiddel.", 
         longDesc: "Natriumcarbonaat is een natuurlijk mineraal dat al eeuwenlang veilig wordt gebruikt bij het bakken. Het is volkomen veilig voor zowel de vaten als de darmen. Touvier classificeert dit als een 'onschuldig' additief dat geen negatieve impact heeft op de gezondheid." 
     },
-
-	
 	{ 
         n: "503", name: "Ammoniumcarbonaten", risk: "Groen", 
         desc: "Rijsmiddel gebruikt in koekjes en gebak.", 
         longDesc: "Dit rijsmiddel (ook wel vlugzout genoemd) verdampt tijdens het bakproces vrijwel volledig in de vorm van gas. Er blijven geen schadelijke resten achter in het koekje. Het is een veilig alternatief voor chemische rijsmiddelen en vormt geen risico voor FH of de darmwand." 
     },
-	
     { 
         n: "541", name: "Natriumaluminiumfosfaat", risk: "Rood", 
         desc: "Rijsmiddel.", 
@@ -426,11 +436,11 @@ const eNumbers = [
         desc: "Natuurlijk glansmiddel (uitscheiding van lakinsecten).", 
         longDesc: "Wordt gebruikt om een glanzend laagje te leggen op appels, citroenen en snoepgoed. Het is een natuurlijke hars die veilig is bevonden door Touvier." 
     },
-
     { 
         n: "950", name: "Acesulfaam-K", risk: "DonkerRood", 
-        desc: "Touvier: Kankerverwekkend.", 
-        longDesc: "Synthetische zoetstof gelinkt aan tumorgroei." 
+        desc: "Synthetische zoetstof.", 
+        warn: "⚠ DUBBEL RISICO: Carcinogeen risico.", 
+        longDesc: "Touvier vond in de NutriNet-Santé studie een direct verhoogd kankerrisico bij hoge inname van deze stof." 
     },
     { 
         n: "951", name: "Aspartaam", risk: "DonkerRood", 
@@ -456,9 +466,9 @@ const eNumbers = [
     },
     { 
         n: "955", name: "Sucralose", risk: "DonkerRood", 
-        desc: "Schadelijk voor vaten.", 
-        warn: "VATEN: Risico bij FH!", 
-        longDesc: "Veroorzaakt schade aan de bloedvaten bij langdurig gebruik." 
+        desc: "Zoetstof (Splenda).", 
+        warn: "⚠ DUBBEL RISICO: Vaatschade & Darmflora-moord.", 
+        longDesc: "Beschadigt de bloedvaten direct (gevaarlijk na TIA) en roeit de goede bacteriën in je darm uit die je juist beschermen tegen poliepen." 
     },
     { 
         n: "960", name: "Stevia", risk: "Geel", 
@@ -473,11 +483,10 @@ const eNumbers = [
     },
     { 
         n: "968", name: "Erythritol", risk: "Oranje", 
-        desc: "Recent gelinkt aan trombose.", 
-        warn: "VATEN: Risico na TIA!", 
-        longDesc: "Bevordert de vorming van bloedstolsels bij hoge bloedwaarden." 
+        desc: "Natuurlijke zoetstof (vaak in light).", 
+        warn: "⚠ DUBBEL RISICO: Trombose-gevaar!", 
+        longDesc: "Recent onderzoek (2023) koppelt hoge waarden in het bloed aan een verhoogde kans op bloedstolsels. Zeer riskant na een TIA geschiedenis." 
     },
-	
 	{ 
         n: "1100", name: "Amylase", risk: "Groen", 
         desc: "Natuurlijk enzym dat zetmeel afbreekt.", 
@@ -488,15 +497,11 @@ const eNumbers = [
         desc: "Enzym dat suiker splitst.", 
         longDesc: "Vaak te vinden in de vulling van bonbons en chocolade om de binnenkant zacht te houden. Wordt door Touvier als veilig beschouwd; het is een natuurlijke hulpstof." 
     },
-
-	
-	
     { 
         n: "1200", name: "Polydextrose", risk: "Oranje", 
         desc: "Marker voor ultra-bewerkt.", 
         longDesc: "Industriële vulstof voor volume in vetvrije producten." 
     },
-	
 	{ 
         n: "1404", name: "Geoxideerd zetmeel", risk: "Geel", 
         desc: "Chemisch behandeld zetmeel; verdikker.", 
@@ -508,8 +513,6 @@ const eNumbers = [
         warn: "VATEN: Extra fosfaatbelasting (FH/TIA risico).", 
         longDesc: "Hasenböhler waarschuwt specifiek voor deze verbinding. Omdat het fosfaatgebonden is, draagt het bij aan de totale fosfaat-inname die aderverkalking versnelt en de vaten stijver maakt." 
     },
-	
-	
     { 
         n: "1422", name: "Gemodif. Zetmeel", risk: "Geel", 
         desc: "Chemische vuller.", 
@@ -521,7 +524,6 @@ const eNumbers = [
         warn: "VATEN: Fosfaatbelasting (FH).", 
         longDesc: "Draagt bij aan stijvere vaten door de fosforverbinding." 
     },
-	
 	{ 
         n: "1450", name: "Zetmeelnatriumoctenylsuccinaat", risk: "Oranje", 
         desc: "Emulgator en stabilisator.", 
