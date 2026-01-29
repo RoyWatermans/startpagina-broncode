@@ -1,0 +1,9 @@
+.well-known/assetlinks.json
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "app.netlify.startpagina12.twa",
+        "sha256_cert_fingerprints": ["4E:18:47:D1:36:44:EA:7A:20:28:13:B9:0E:C7:E5:03:02:63:E4:70:4D:CA:07:73:95:67:D9:94:1E:C7:04:F3"]
+      }
+    }]
