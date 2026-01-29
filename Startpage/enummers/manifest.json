@@ -1,21 +1,21 @@
 {
-  "short_name": "E-Check",
   "name": "E-Check Master",
+  "short_name": "E-Check",
+  "description": "Persoonlijke E-nummer scanner voor darm- en vaatgezondheid.",
+  "start_url": "e-nummers.html",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
       "src": "icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ],
-  "start_url": "/e-nummers.html",
-  "background_color": "#1a1a1a",
-  "display": "standalone",
-  "scope": "/",
-  "theme_color": "#1a1a1a"
+  ]
 }

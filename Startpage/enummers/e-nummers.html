@@ -88,5 +88,14 @@
     searchInput.addEventListener('input', updateSearch);
     init();
 </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Offline modus operationeel!'))
+        .catch(err => console.log('SW registratie mislukt', err));
+    });
+  }
+</script>
 </body>
 </html>
